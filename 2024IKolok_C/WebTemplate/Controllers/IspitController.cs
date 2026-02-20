@@ -138,4 +138,35 @@ public class IspitController : ControllerBase
         }
     }
 
+    //pronalazenje ukupne mase riba u rezervoaru
+
+    [HttpGet("UkupnaMasaRiba/{idRezevoara}")]
+    public async Task<IActionResult>UkupnaMasaRiba(int idRezevoara)
+    {
+        try
+        {
+            var mase=await Context
+            .Akvarijums.Include(r=>r.P_Riba)
+            .Include(r=>r.P_Rezervoar)
+            .Where(p=>p.P_Rezervoar!.ID==idRezevoara)
+            .Select(m=>m.P_Riba!.masa * m.brojjediniki)
+            .ToListAsync();
+
+
+            if (mase == null)
+            {
+                return NotFound("nema");
+            }
+
+            double ukupnamasa=0;
+            foreach(double m in mase)
+            {
+                ukupnamasa+=m;
+            }
+            return Ok($"ukupna masa={ukupnamasa}");
+        }catch(Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 }
