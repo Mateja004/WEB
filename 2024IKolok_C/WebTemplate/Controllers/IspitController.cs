@@ -47,17 +47,17 @@ public class IspitController : ControllerBase
             var rezervoar=await Context.Rezervoars.FindAsync(idRezevoara);
             if (rezervoar == null)
             {
-                return NotFound("kara banana bato");
+                return NotFound("nema");
             }
             var riba=await Context.Ribas.FindAsync(idRibe);
             if (riba == null)
             {
-                return NotFound("kara banana");
+                return NotFound("nema");
             }
 
             if (rezervoar.Kapacitet < brJedinki+rezervoar.BrojRiba)
             {
-                return BadRequest("aha, kurcina...ovaj je pun");
+                return BadRequest("ovaj je pun");
             }
             var mogucaSmetnja= await Context
             .Akvarijums.Include(r=>r.P_Riba)
@@ -97,7 +97,7 @@ public class IspitController : ControllerBase
             var Akvarijum=await Context.Akvarijums.FindAsync(idAkvarijuma);
             if (Akvarijum == null)
             {
-                return BadRequest("Kurcina");
+                return BadRequest("nema");
             }
 
             if (Akvarijum.brojjediniki == noviBrojJedinki)

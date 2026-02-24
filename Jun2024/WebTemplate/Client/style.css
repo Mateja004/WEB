@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    gap: 20px
+}
+
+.levi1{
+    display: grid;
+    grid-template-columns: 150px auto;
+    row-gap: 15px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.levi2{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 150px auto;
+    row-gap: 15px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.levi{
+    flex-basis: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.dugme{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.desni{
+    flex:1;
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+}
+.autokartica{
+    border: 2px solid black;
+    padding: 15px;
+    width: 200px;
+    margin-bottom: auto;
+}

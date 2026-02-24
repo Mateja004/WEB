@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+}
+
+.levi{
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    flex-basis: 500px;
+    row-gap: 15px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.grid-2{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
